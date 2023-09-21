@@ -1,0 +1,21 @@
+name: EnvVelvet
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - fastqc
+  - multiqc
+  - python>=3.10
+  - velvet
+  - plotly
+  - pip
+  - numpy
+  - pandas
+  - jupyter
+  - scipy
+  - matplotlib
+  - pip:
+    - scikit-learn
+    - dash
+    - jupyter-dash
