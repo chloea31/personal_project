@@ -15,6 +15,10 @@
 
 ## Requirements
 
+#### Install miniconda3: 
+
+[Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers)
+
 <a name="usage"></a> 
 
 ## Usage
