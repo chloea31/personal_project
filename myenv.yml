@@ -15,6 +15,7 @@ dependencies:
   - jupyter
   - scipy
   - matplotlib
+  - datamash
   - pip:
     - scikit-learn
     - dash
