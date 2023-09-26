@@ -37,4 +37,5 @@ This project is developed by Chloé Aujoulat.
 ### Articles
 - Dominguez Del Angel, Victoria, Erik Hjerde, Lieven Sterck, Salvadors Capella-Gutierrez, Cederic Notredame, Olga Vinnere Pettersson, Joelle Amselem, et al. « Ten Steps to Get Started in Genome Assembly and Annotation ». F1000Research 7 (2018): ELIXIR-148. https://doi.org/10.12688/f1000research.13598.1.
 - Wick, Ryan R., Louise M. Judd, Claire L. Gorrie, et Kathryn E. Holt. « Unicycler: Resolving Bacterial Genome Assemblies from Short and Long Sequencing Reads ». PLOS Computational Biology 13, nᵒ 6 (8 juin 2017): e1005595. https://doi.org/10.1371/journal.pcbi.1005595.
+- Blankenberg, D., Gordon, A., Kuster, G. V., Coraor, N., Taylor, J., & and, A. N. (2010). Manipulation of FASTQ data with Galaxy. Bioinformatics, 26(14), 1783–1785. https://doi.org/10.1093/bioinformatics/btq281.
 
