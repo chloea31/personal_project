@@ -38,3 +38,4 @@ multiqc ../fastqc/*_fastqc.zip
 ##########
 # Assemble reads with Velvet
 ##########
+https://usegalaxy.eu/root?tool_id=fastq_paired_end_interlacer
