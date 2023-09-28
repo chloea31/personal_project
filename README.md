@@ -10,6 +10,7 @@
 <a name="descrp"></a>
 
 ## Description
+The goal of this project is to learn about genome assembly. We consider both prokaryote and eukaryote genomes, use different assemblers, as Velvet or Unicycler, and compare them using literature and tutorials.
 
 <a name="req"></a> 
 
