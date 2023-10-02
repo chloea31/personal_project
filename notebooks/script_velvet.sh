@@ -38,4 +38,36 @@ multiqc ../fastqc/*_fastqc.zip
 ##########
 # Assemble reads with Velvet
 ##########
-https://usegalaxy.eu/root?tool_id=fastq_paired_end_interlacer
+
+# 1) Interlacer tool:
+# Use this link: https://usegalaxy.eu/root?tool_id=fastq_paired_end_interlacer
+
+# 2) velveth
+velveth ../reports/velvet/. 29 -shortPaired -fastq -interleaved ../data/interm/Galaxy5-\[FASTQ_interlacer_pairs_from_data_2_and_data_1\].fastqsanger
+less Log
+less Roadmaps
+less Sequences
+
+# 3) velvetg
+velvetg .
+less contigs.fa
+wc -l stats.txt
+tail -5 stats.txt
+grep -o '>' contigs.fa | wc -l
+
+##########
+# Collect some statistics on the contigs
+##########
+
+# Datamash
+cat stats.txt | datamash -H mean 2
+cat stats.txt | datamash -H min 2
+cat stats.txt | datamash -H max 2
+
+# Quast
+/home/caujoulat/miniconda3/envs/EnvVelvet/bin/quast.py ../reports/velvet/contigs.fa \
+    -o ../reports/quast/. \
+    -r ../data/raw/wildtype.fna \
+    --contig-thresholds 0.1000
+
+
