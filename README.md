@@ -12,6 +12,10 @@
 ## Description
 The goal of this project is to learn about genome assembly. We consider both prokaryote and eukaryote genomes, use different assemblers, as Velvet or Unicycler, and compare them using literature and tutorials.
 
+#### The pipeline is designed as follow:
+
+![alt text](2023-10-03-ca-pipeline-genome-assembly.png)
+
 <a name="req"></a> 
 
 ## Requirements
@@ -44,5 +48,4 @@ This project is developed by Chloé Aujoulat.
 - Dominguez Del Angel, Victoria, Erik Hjerde, Lieven Sterck, Salvadors Capella-Gutierrez, Cederic Notredame, Olga Vinnere Pettersson, Joelle Amselem, et al. « Ten Steps to Get Started in Genome Assembly and Annotation ». F1000Research 7 (2018): ELIXIR-148. https://doi.org/10.12688/f1000research.13598.1.
 - Wick, Ryan R., Louise M. Judd, Claire L. Gorrie, et Kathryn E. Holt. « Unicycler: Resolving Bacterial Genome Assemblies from Short and Long Sequencing Reads ». PLOS Computational Biology 13, nᵒ 6 (8 juin 2017): e1005595. https://doi.org/10.1371/journal.pcbi.1005595.
 - Zerbino, Daniel R., et Ewan Birney. « Velvet: Algorithms for de novo short read assembly using de Bruijn graphs ». Genome Research 18, nᵒ 5 (mai 2008): 821‑29. https://doi.org/10.1101/gr.074492.107.
-
 
