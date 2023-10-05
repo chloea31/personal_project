@@ -17,6 +17,7 @@ dependencies:
   - matplotlib
   - datamash
   - quast
+  - unicycler
   - pip:
     - scikit-learn
     - dash
