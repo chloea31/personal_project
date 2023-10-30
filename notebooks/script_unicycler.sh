@@ -33,4 +33,5 @@ multiqc ../fastqc/*_fastqc.zip
 # Assemble reads with Unicycler
 ##########
 
-
+unicycler -1 data/raw/illumina_f.fq -2 data/raw/illumina_r.fq -l data/raw/minion_2d.fq -o reports/assembly/
+grep ">" assembly.fasta | wc -l
