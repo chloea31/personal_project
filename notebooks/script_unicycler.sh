@@ -112,5 +112,15 @@ $QUAST_DIR/quast.py -o $WORK_DIR/reports/quast/ $WORK_DIR/reports/assembly/assem
 #################
 ### Genome annotation using Prokka
 #################
+echo "> run prokka"
 
+if [ ! -d $WORK_DIR/reports/prokka ]; then
+    mkdir $WORK_DIR/reports/prokka
+fi
 
+prokka --outdir $WORK_DIR/reports/prokka \
+    --genus Escherichia \
+    --species coli \
+    --strain C-1 \
+    --usegenus ON \
+    $WORK_DIR/reports/assembly/assembly.fasta 
