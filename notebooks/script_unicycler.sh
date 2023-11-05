@@ -114,13 +114,9 @@ $QUAST_DIR/quast.py -o $WORK_DIR/reports/quast/ $WORK_DIR/reports/assembly/assem
 #################
 echo "> run prokka"
 
-if [ ! -d $WORK_DIR/reports/prokka ]; then
-    mkdir $WORK_DIR/reports/prokka
-fi
-
 prokka --outdir $WORK_DIR/reports/prokka \
     --genus Escherichia \
     --species coli \
     --strain C-1 \
-    --usegenus ON \
+    --usegenus \
     $WORK_DIR/reports/assembly/assembly.fasta 
