@@ -17,6 +17,7 @@ dependencies:
   - datamash
   - quast
   - unicycler
+  - prokka
   - pip:
     - scikit-learn
     - dash
