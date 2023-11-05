@@ -26,6 +26,7 @@ conda activate EnvVelvet
 SITE="https://zenodo.org/record/940733/files/"
 WORK_DIR=/home/Documents/Bioinformatique/personal_project/ # work directory
 FILES="illumina_f.fq illumina_r.fq minion_2d.fq"
+QUAST_DIR=/home/caujoulat/miniforge3/envs/EnvVelvet/bin
 
 ####################
 ### Data collection
@@ -86,7 +87,15 @@ multiqc ../fastqc/*_fastqc.zip
 #################
 echo "> run unicycler"
 
-unicycler -1 data/raw/illumina_f.fq -2 data/raw/illumina_r.fq -l data/raw/minion_2d.fq -o reports/assembly/
+if [ ! -d $WORK_DIR/reports/assembly ]; then
+    mkdir $WORK_DIR/reports/assembly
+fi
+
+unicycler -1 $WORK_DIR/data/raw/illumina_f.fq \
+    -2 $WORK_DIR/data/raw/illumina_r.fq \
+    -l $WORK_DIR/data/raw/minion_2d.fq \
+    -o reports/assembly/ # hybrid assembly
+
 grep ">" assembly.fasta | wc -l
 
 #################
@@ -94,6 +103,11 @@ grep ">" assembly.fasta | wc -l
 #################
 echo "run assembly quality with quast"
 
+if [ ! -d $WORK_DIR/reports/quast ]; then
+    mkdir $WORK_DIR/reports/quast
+fi
+
+$QUAST_DIR/quast.py -o $WORK_DIR/reports/quast/ $WORK_DIR/reports/assembly/assembly.fasta
 
 #################
 ### Genome annotation using Prokka
