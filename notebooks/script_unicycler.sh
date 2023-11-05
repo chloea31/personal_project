@@ -77,11 +77,14 @@ for file in $WORK_DIR/data/raw/*.fq; do
 done
 
 # MultiQC on FASTQ files
+echo "> run multiqc"
+
 multiqc ../fastqc/*_fastqc.zip
 
 #################
 ### Assemble reads with Unicycler
 #################
+echo "> run unicycler"
 
 unicycler -1 data/raw/illumina_f.fq -2 data/raw/illumina_r.fq -l data/raw/minion_2d.fq -o reports/assembly/
 grep ">" assembly.fasta | wc -l
@@ -89,7 +92,7 @@ grep ">" assembly.fasta | wc -l
 #################
 ### Assess Assembly quality with Quast
 #################
-
+echo "run assembly quality with quast"
 
 
 #################
