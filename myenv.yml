@@ -18,6 +18,7 @@ dependencies:
   - quast
   - unicycler
   - prokka
+  - nextflow
   - pip:
     - scikit-learn
     - dash
