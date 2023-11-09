@@ -14,6 +14,7 @@
 cd /mnt/d/Bioinformatique/personal_project
 mkdir data
 mkdir raw
+mkdir velvet
 cd data/raw/
 
 wget https://zenodo.org/record/582600/files/mutant_R1.fastq
