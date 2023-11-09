@@ -52,13 +52,39 @@ done
 #wget https://zenodo.org/record/582600/files/mutant_R2.fastq
 #wget https://zenodo.org/record/582600/files/wildtype.fna
 
+####################
+### Quality control of the data
+####################
+echo "> quality control of the data"
 
-# Quality control of the data
+for file in $WORK_DIR/data/raw/velvet/*.fastq; do 
+    if [ ! -f $WORK_DIR/reports/QC/velvet/{$FILES}_fastqc.zip ]; then
+        if [ ! -d $WORK_DIR/reports ]; then 
+            mkdir $WORK_DIR/reports
+        fi
+        if [ ! -d $WORK_DIR/reports/QC ]; then
+            mkdir $WORK_DIR/reports/QC
+        fi
+        if [ ! -d $WORK_DIR/reports/QC/velvet/ ]; then
+            mkdir $WORK_DIR/reports/QC/velvet
+        fi
+        fastqc $file -o $WORK_DIR/reports/QC/velvet/
+    fi
+done
+
 #fastqc mutant_R1.fastq
 #fastqc mutant_R2.fastq
 
-# MultiQC on FASTQ files
-#multiqc ../fastqc/*_fastqc.zip
+##################
+### MultiQC on FASTQ files
+##################
+echo "> run the multiQC"
+
+if [ ! -d $WORK_DIR/reports/QC/velvet/multiQC ]; then
+    mkdir $WORK_DIR/reports/QC/velvet/multiQC
+fi
+
+multiqc $WORK_DIR/reports/QC/velvet/*_fastqc.zip -o $WORK_DIR/reports/QC/velvet/multiQC
 
 ##########
 # Assemble reads with Velvet
