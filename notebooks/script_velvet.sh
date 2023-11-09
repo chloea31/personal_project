@@ -84,11 +84,14 @@ if [ ! -d $WORK_DIR/reports/QC/velvet/multiQC ]; then
     mkdir $WORK_DIR/reports/QC/velvet/multiQC
 fi
 
-multiqc $WORK_DIR/reports/QC/velvet/*_fastqc.zip -o $WORK_DIR/reports/QC/velvet/multiQC
+if [ ! -f $WORK_DIR/reports/QC/velvet/multiQC/multiqc_data/multiqc* ]; then
+    multiqc $WORK_DIR/reports/QC/velvet/*_fastqc.zip -o $WORK_DIR/reports/QC/velvet/multiQC
+fi
 
-##########
+####################
 # Assemble reads with Velvet
-##########
+####################
+echo "> genome assembly"
 
 # 1) Interlacer tool:
 # Use this link: https://usegalaxy.eu/root?tool_id=fastq_paired_end_interlacer

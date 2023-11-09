@@ -17,14 +17,14 @@ conda activate EnvVelvet
 ### Running the pipeline
 ####################
 
-# in /home/Documents/Bioinformatique/personal_project/notebooks/ tape: ./script_unicycler.sh
+# in /home/Documents/Bioinformatique/personal_project/ tape: ./notebooks/script_unicycler.sh
 
 ####################
 ### Variable initialization
 ####################
 
-SITE="https://zenodo.org/record/940733/files/"
-WORK_DIR=/home/Documents/Bioinformatique/personal_project/ # work directory
+SITE="https://zenodo.org/record/940733/files"
+WORK_DIR=. # working directory
 FILES="illumina_f.fq illumina_r.fq minion_2d.fq"
 QUAST_DIR=/home/caujoulat/miniforge3/envs/EnvVelvet/bin
 
@@ -56,7 +56,7 @@ done
 #wget https://zenodo.org/record/940733/files/illumina_r.fq
 #wget https://zenodo.org/record/940733/files/minion_2d.fq
 
-du -sh *
+#du -sh *
 
 ####################
 ### Quality control of the data
