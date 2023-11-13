@@ -57,17 +57,10 @@ done
 ####################
 echo "> quality control of the data"
 
+# basename and without the extension
 for file in $WORK_DIR/data/raw/velvet/*.fastq; do 
-    if [ ! -f $WORK_DIR/reports/QC/velvet/{$FILES}_fastqc.zip ]; then
-        if [ ! -d $WORK_DIR/reports ]; then 
-            mkdir $WORK_DIR/reports
-        fi
-        if [ ! -d $WORK_DIR/reports/QC ]; then
-            mkdir $WORK_DIR/reports/QC
-        fi
-        if [ ! -d $WORK_DIR/reports/QC/velvet/ ]; then
-            mkdir $WORK_DIR/reports/QC/velvet
-        fi
+    if [[ ! -f $WORK_DIR/reports/QC/velvet/${file}_fastqc.zip ]]; then
+        mkdir -p $WORK_DIR/reports/QC/velvet # to create all folders recursively
         fastqc $file -o $WORK_DIR/reports/QC/velvet/
     fi
 done
@@ -80,11 +73,9 @@ done
 ##################
 echo "> run the multiQC"
 
-if [ ! -d $WORK_DIR/reports/QC/velvet/multiQC ]; then
-    mkdir $WORK_DIR/reports/QC/velvet/multiQC
-fi
+mkdir -p $WORK_DIR/reports/QC/velvet/multiQC
 
-if [ ! -f $WORK_DIR/reports/QC/velvet/multiQC/multiqc_data/multiqc* ]; then
+if [ ! -d $WORK_DIR/reports/QC/velvet/multiQC/multiqc_data ]; then
     multiqc $WORK_DIR/reports/QC/velvet/*_fastqc.zip -o $WORK_DIR/reports/QC/velvet/multiQC
 fi
 
@@ -93,16 +84,34 @@ fi
 ####################
 echo "> genome assembly"
 
+mkdir -p $WORK_DIR/data/interm/velvet
+
 # 1) Interlacer tool:
 # Use this link: https://usegalaxy.eu/root?tool_id=fastq_paired_end_interlacer
 
 # 2) velveth
-#velveth ../reports/velvet/. 29 -shortPaired -fastq -interleaved ../data/interm/Galaxy5-\[FASTQ_interlacer_pairs_from_data_2_and_data_1\].fastqsanger
+echo ">run velveth"
+#velveth ../reports/velvet/. 29 -shortPaired -fastq -interleaved ../data/interm/velvet/fastq_interlacer_PE.fastqsanger
 #less Log
 #less Roadmaps
 #less Sequences
 
+mkdir -p $WORK_DIR/reports/assembly/velvet/test_k_mers
+
+START=31
+END=101
+STEP=4
+
+SEQ_COUNT=$(seq $START $STEP $END | wc -l) # gives the number of files we should have
+FILE_COUNT=$(ls -l $WORK_DIR/reports/assembly/velvet/test_k_mers_* | wc -l) # we do not count the test_kmers we created previously
+
+if [ $FILE_COUNT -ne $SEQ_COUNT ]; then 
+    velveth $WORK_DIR/reports/assembly/velvet/test_k_mers $START,$END,$STEP -shortPaired -fastq -interleaved \
+        $WORK_DIR/data/interm/velvet/fastq_interlacer_PE.fastqsanger
+fi 
+
 # 3) velvetg
+echo "> run velvetg"
 #velvetg .
 #less contigs.fa
 #wc -l stats.txt
@@ -114,11 +123,13 @@ echo "> genome assembly"
 ##########
 
 # Datamash
+echo ">run datamash"
 #cat stats.txt | datamash -H mean 2
 #cat stats.txt | datamash -H min 2
 #cat stats.txt | datamash -H max 2
 
 # Quast
+echo "> run quast"
 #/home/caujoulat/miniconda3/envs/EnvVelvet/bin/quast.py ../reports/velvet/contigs.fa \
  #   -o ../reports/quast/. \
  #   -r ../data/raw/wildtype.fna \
