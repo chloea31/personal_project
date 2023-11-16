@@ -81,7 +81,7 @@ if [ ! -d $WORK_DIR/reports/QC/velvet/multiQC/multiqc_data ]; then
 fi
 
 ####################
-# Assemble reads with Velvet
+### Assemble reads with Velvet
 ####################
 echo "> genome assembly"
 
@@ -119,9 +119,17 @@ echo "> run velvetg"
 #tail -5 stats.txt
 #grep -o '>' contigs.fa | wc -l
 
-##########
-# Collect some statistics on the contigs
-##########
+mkdir -p $WORK_DIR/reports/assembly/velvet/results_velvetg
+
+FILE_COUNT_BIS=$(ls -l $WORK_DIR/reports/assembly/velvet/results_velvetg* | wc -l)
+
+if [ $FILE_COUNT -ne $SEQ_COUNT ]; then 
+    velvetg $WORK_DIR/reports/assembly/velvet/results_velvetg 
+fi 
+
+#####################
+### Collect some statistics on the contigs
+#####################
 
 # Datamash
 echo ">run datamash"
