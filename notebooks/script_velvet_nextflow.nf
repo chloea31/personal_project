@@ -7,37 +7,21 @@
 // Declare synthax version
 nextflow.enable.dsl=2 
 
-// Parameters
-myFileChannel = Channel.fromPath( '/data/raw/*' )
-
-process sayHello {
-    input:
-        val cheers
-    output:
-        stdout
-
-    """
-    echo $cheers
-    """
-}
-
-workflow {
-    channel.of('Ciao', 'Hello', 'Hola') | sayHello | view
-}
+// channels: allow processes to communicate between each other 
 
 process downloadFiles {
     input:
-        val(file)
+        val file
 
     output:
-        echo $file
+        path './data/raw/velvet/*.fastq' 
+        path './data/raw/velvet/*.fna'
 
-    script:
     """
-    wget https://zenodo.org/record/582600/files/$file
+    wget -P ./data/raw/velvet/ https://zenodo.org/record/582600/files/$file 
     """
 }
 
 workflow {
-    channel.of
+    Channel.of("mutant_R1.fastq","mutant_R2.fastq","wildtype.fna") | downloadFiles | view
 }

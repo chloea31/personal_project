@@ -59,9 +59,10 @@ echo "> quality control of the data"
 
 # basename and without the extension
 for file in $WORK_DIR/data/raw/velvet/*.fastq; do 
-    if [[ ! -f $WORK_DIR/reports/QC/velvet/${file}_fastqc.zip ]]; then
+    fastq_file="$(basename -- $file)"
+    if [[ ! -f $WORK_DIR/reports/QC/velvet/${fastq_file%.*} ]]; then
         mkdir -p $WORK_DIR/reports/QC/velvet # to create all folders recursively
-        fastqc $file -o $WORK_DIR/reports/QC/velvet/
+        fastqc ${fastq_file%.*} -o $WORK_DIR/reports/QC/velvet/
     fi
 done
 
