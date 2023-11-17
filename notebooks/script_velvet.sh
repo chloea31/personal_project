@@ -23,7 +23,7 @@
 ####################
 
 SITE="https://zenodo.org/record/582600/files"
-WORK_DIR=. # working directory
+WORK_DIR="$PWD" # working directory -> absolute way of the current (working) directory
 FILES="mutant_R1.fastq mutant_R2.fastq wildtype.fna"
 #QUAST_DIR=/home/caujoulat/miniforge3/envs/EnvVelvet/bin
 
@@ -57,11 +57,12 @@ done
 ####################
 echo "> quality control of the data"
 
+mkdir -p $WORK_DIR/reports/QC/velvet # to create all folders recursively
+
 # basename and without the extension
 for file in $WORK_DIR/data/raw/velvet/*.fastq; do 
     fastq_file="$(basename -- $file)"
     if [[ ! -f $WORK_DIR/reports/QC/velvet/${fastq_file%.*} ]]; then
-        mkdir -p $WORK_DIR/reports/QC/velvet # to create all folders recursively
         fastqc ${fastq_file%.*} -o $WORK_DIR/reports/QC/velvet/
     fi
 done
@@ -119,23 +120,24 @@ echo "> run velvetg"
 #tail -5 stats.txt
 #grep -o '>' contigs.fa | wc -l
 
-mkdir -p $WORK_DIR/reports/assembly/velvet/results_velvetg
-
-FILE_COUNT_BIS=$(ls -l $WORK_DIR/reports/assembly/velvet/results_velvetg* | wc -l)
-
-if [ $FILE_COUNT -ne $SEQ_COUNT ]; then 
-    velvetg $WORK_DIR/reports/assembly/velvet/results_velvetg 
-fi 
-
-#####################
-### Collect some statistics on the contigs
-#####################
+for folder in $WORK_DIR/reports/assembly/velvet/test_k_mers*; do
+    if [ ! -f $WORK_DIR/reports/assembly/velvet/$folder/contigs.fa ]; then
+        cd $folder && velvetg .
+        # does not change the global directory of the program (comes directly back to the main folder after 
+        # running velvetg): only changes the folder for the velvetg command
+        # &&: if the command on the left is successful, executes the command on the right
+    fi
+done 
 
 # Datamash
 echo ">run datamash"
 #cat stats.txt | datamash -H mean 2
 #cat stats.txt | datamash -H min 2
 #cat stats.txt | datamash -H max 2
+
+#####################
+### Collect fasta statistics on the contigs
+#####################
 
 # Quast
 echo "> run quast"
