@@ -142,13 +142,22 @@ echo ">run datamash"
 # Quast
 echo "> run quast"
 
-mkdir -p $WORK_DIR/reports/quast/velvet/contig_folder
+CONTIG_START=31
+CONTIG_END=101
+CONTIG_STEP=4
 
+CONTIG_SEQ_COUNT=$(seq $CONTIG_START $CONTIG_STEP $CONTIG_END | wc -l) # gives the number of files we should have
+CONTIG_FILE_COUNT=$(ls -l $WORK_DIR/reports/quast/velvet/contig_kmer_* | wc -l) 
 
-/home/caujoulat/miniforge3/envs/EnvVelvet/bin/quast.py reports/assembly/velvet/test_kmer_31/contigs.fa \
-    -o reports/quast/velvet/contig_kmer_31/ \
-    -r data/raw/wildtype.fna \
-    --contig-thresholds 0,1000
+for folder in $WORK_DIR/reports/assembly/velvet/test_k_mers*; do
+#for contig_file in $WORK_DIR/reports/assembly/velvet/$folder/; do
+    if [ $CONTIG_FILE_COUNT -ne $CONTIG_SEQ_COUNT ]; then
+        /home/caujoulat/miniforge3/envs/EnvVelvet/bin/quast.py reports/assembly/velvet/$folder/contigs.fa \
+            -o reports/quast/velvet/contig_kmer_$CONTIG_FILE_COUNT \
+            -r data/raw/wildtype.fna \
+            --contig-thresholds 0,1000
+    fi
+done
 
 # By default, assume a prokaryotic genome 
 # By default, we assume a lower threshold of 500 (lower threshold of contig length)
