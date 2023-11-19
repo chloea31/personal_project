@@ -1,10 +1,10 @@
 #!/bin/bash
 
-########################################################################################################################
-########################################################################################################################
-#*/                                    INTRODUCTION TO GENOME ASSEMBLY USING VELVET                                  /*#
-########################################################################################################################
-########################################################################################################################
+###########################################################################################################
+###########################################################################################################
+#*/                              INTRODUCTION TO GENOME ASSEMBLY USING VELVET                           /*#
+###########################################################################################################
+###########################################################################################################
 
 ####################
 ### Activate the working environment
@@ -109,7 +109,8 @@ END=101
 STEP=4
 
 SEQ_COUNT=$(seq $START $STEP $END | wc -l) # gives the number of files we should have
-FILE_COUNT=$(ls -l $WORK_DIR/reports/velvet/assembly/test_k_mers_* | wc -l) # we do not count the test_kmers we created previously
+FILE_COUNT=$(ls -l $WORK_DIR/reports/velvet/assembly/test_k_mers_* | wc -l) 
+# we do not count the test_kmers we created previously
 
 if [ $FILE_COUNT -ne $SEQ_COUNT ]; then 
     velveth "$WORK_DIR/reports/velvet/assembly/test_k_mers" $START,$END,$STEP -shortPaired -fastq -interleaved \
@@ -146,20 +147,12 @@ echo ">run datamash"
 # Quast
 echo "> run quast"
 
-CONTIG_START=31
-CONTIG_END=101
-CONTIG_STEP=4
-
-CONTIG_SEQ_COUNT=$(seq $CONTIG_START $CONTIG_STEP $CONTIG_END | wc -l) # gives the number of files we should have
-CONTIG_FILE_COUNT=$(ls -l $WORK_DIR/reports/velvet/quast/contig_kmer_* | wc -l) 
-
 for folder in $WORK_DIR/reports/velvet/assembly/test_k_mers*; do
-#for contig_file in $WORK_DIR/reports/assembly/velvet/$folder/; do
-    if [ $CONTIG_FILE_COUNT -ne $CONTIG_SEQ_COUNT ]; then
-        velvet_kmer_contigs="$(basename -- $folder)"
-        quast $folder/contigs.fa \
-            -o $WORK_DIR/reports/velvet/quast/contig_kmer_$CONTIG_FILE_COUNT \
-            -r data/raw/velvet/wildtype.fna \
+    test_k_mers="$(basename $folder)" # end of the path with the number of test_kmers_xx
+    if [ ! -d "$WORK_DIR/reports/velvet/quast/$test_k_mers" ]; then
+        quast "$folder/contigs.fa" \
+            -o "$WORK_DIR/reports/velvet/quast/$test_k_mers" \
+            -r "$WORK_DIR/data/raw/velvet/wildtype.fna" \
             --contig-thresholds 0,1000
     fi
 done
