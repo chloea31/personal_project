@@ -141,9 +141,15 @@ echo ">run datamash"
 
 # Quast
 echo "> run quast"
-#/home/caujoulat/miniconda3/envs/EnvVelvet/bin/quast.py ../reports/velvet/contigs.fa \
- #   -o ../reports/quast/. \
- #   -r ../data/raw/wildtype.fna \
- #   --contig-thresholds 0.1000
 
+mkdir -p $WORK_DIR/reports/quast/velvet/contig_folder
+
+
+/home/caujoulat/miniforge3/envs/EnvVelvet/bin/quast.py reports/assembly/velvet/test_kmer_31/contigs.fa \
+    -o reports/quast/velvet/contig_kmer_31/ \
+    -r data/raw/wildtype.fna \
+    --contig-thresholds 0,1000
+
+# By default, assume a prokaryotic genome 
+# By default, we assume a lower threshold of 500 (lower threshold of contig length)
 
