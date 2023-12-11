@@ -52,4 +52,5 @@ This project is developed by Chloé Aujoulat.
 
 ### PDF files
 - https://www.animalgenome.org/bioinfo/resources/manuals/velvet.pdf
+- Manual Velvet: https://github.com/dzerbino/velvet/blob/master/Manual.pdf 
 
