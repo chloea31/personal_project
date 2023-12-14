@@ -35,6 +35,8 @@ process downloadFiles {
 
 workflow {
     Channel.of(
-        ["staphyloccocus_aureus","https://zenodo.org/record/582600/files/mutant_R1.fastq","https://zenodo.org/record/582600/files/mutant_R2.fastq"]
+        ["staphyloccocus_aureus",
+         "https://zenodo.org/record/582600/files/mutant_R1.fastq",
+         "https://zenodo.org/record/582600/files/mutant_R2.fastq"]
     ) | downloadFiles
 }
