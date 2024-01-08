@@ -49,6 +49,10 @@ This project is developed by Chloé Aujoulat.
 
 ## References
 
+### Master thesis
+
+- See link presented hereafter, filled in during the Master's thesis (Mittweida): https://docs.google.com/document/d/1qY48NFNB6xLzdDkWUJjfnFKcO7WQIyV5wA82bXYRPmQ/edit#heading=h.i9iemt2vcgr5 
+
 ### Tutorials
 - Velvet:
     - Simon Gladman, An Introduction to Genome Assembly (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/assembly/tutorials/general-introduction/tutorial.html Online; accessed Thu Sep 28 2023.
