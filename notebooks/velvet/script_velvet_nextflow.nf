@@ -40,3 +40,22 @@ workflow {
          "https://zenodo.org/record/582600/files/mutant_R2.fastq"]
     ) | downloadFiles
 }
+
+process interlacerFiles {
+    input:
+        tuple val(species), val(R1), val(R2)
+
+    output:
+        path "${species}"
+        path "${species}/data/interm/velvet/*.fastqsanger"
+
+    """
+    mkdir -p $species/data/interm/velvet/
+    echo '>use the Galaxy website or try to find a command line to do it in the terminal'
+    """
+}
+
+workflow {
+    Channel.of() | interlacerFiles
+}
+

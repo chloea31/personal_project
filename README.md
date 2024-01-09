@@ -24,6 +24,18 @@ The goal of this project is to learn about genome assembly. We consider both pro
 
 [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers)
 
+#### Install Miniforge3 for Linux:
+
+[Miniforge3](https://github.com/conda-forge/miniforge?tab=readme-ov-file)
+
+Then, close and re-open your terminal window and run ```which mamba``` to see if mamba is well installed.
+
+#### Install your environment from a .yml file:
+
+[Environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment)
+
+Run ```mamba activate myenv.yml``` to install the environment.
+
 <a name="usage"></a> 
 
 ## Usage
@@ -36,6 +48,10 @@ This project is developed by Chloé Aujoulat.
 <a name="references"></a> 
 
 ## References
+
+### Master thesis
+
+- See link presented hereafter, filled in during the Master's thesis (Mittweida): https://docs.google.com/document/d/1qY48NFNB6xLzdDkWUJjfnFKcO7WQIyV5wA82bXYRPmQ/edit#heading=h.i9iemt2vcgr5 
 
 ### Tutorials
 - Velvet:
