@@ -83,7 +83,7 @@ if [ ! -d $WORK_DIR/reports/unicycler/QC/multiQC ]; then
     mkdir -p "$WORK_DIR/reports/unicycler/QC/multiQC"
 fi
 if [ ! -d $WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data ]; then
-    multiqc "$WORK_DIR/reports/unicycler/QC/*_fastqc.zip" -o "$WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data"
+    multiqc "$WORK_DIR/reports/unicycler/QC/" -o "$WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data"  
 fi
 
 #################
