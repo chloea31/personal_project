@@ -81,9 +81,7 @@ echo "> run multiqc"
 
 if [ ! -d $WORK_DIR/reports/unicycler/QC/multiQC ]; then 
     mkdir -p "$WORK_DIR/reports/unicycler/QC/multiQC"
-fi
-if [ ! -d $WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data ]; then
-    multiqc "$WORK_DIR/reports/unicycler/QC/" -o "$WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data"  
+    multiqc "$WORK_DIR/reports/unicycler/QC/" -o "$WORK_DIR/reports/unicycler/QC/multiQC/multiqc_data"
 fi
 
 #################
@@ -91,14 +89,15 @@ fi
 #################
 echo "> run unicycler"
 
-# if [ ! -d $WORK_DIR/reports/assembly ]; then
-#     mkdir $WORK_DIR/reports/assembly
-# fi
+if [ ! -d $WORK_DIR/reports/unicycler/assembly ]; then
+    mkdir -p "$WORK_DIR/reports/unicycler/assembly"
+    unicycler -1 $WORK_DIR/data/raw/unicycler/illumina_f.fq \
+    -2 $WORK_DIR/data/raw/unicycler/illumina_r.fq \
+    -l $WORK_DIR/data/raw/unicycler/minion_2d.fq \
+    -o reports/unicycler/assembly/ # hybrid assembly
+fi
 
-# unicycler -1 $WORK_DIR/data/raw/illumina_f.fq \
-#     -2 $WORK_DIR/data/raw/illumina_r.fq \
-#     -l $WORK_DIR/data/raw/minion_2d.fq \
-#     -o reports/assembly/ # hybrid assembly
+
 
 # grep ">" assembly.fasta | wc -l
 
