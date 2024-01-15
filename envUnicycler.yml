@@ -1,0 +1,23 @@
+name: EnvUnicycler
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastqc
+  - multiqc
+  - python>=3.10
+  - plotly
+  - pip
+  - numpy
+  - pandas
+  - jupyter
+  - scipy
+  - matplotlib
+  - quast
+  - unicycler
+  - prokka
+  - nextflow
+  - pip:
+    - scikit-learn
+    - dash
+    - jupyter-dash
