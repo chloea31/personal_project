@@ -34,7 +34,7 @@ QUAST_DIR=/home/caujoulat/miniforge3/envs/EnvUnicycler/bin
 echo "> download the datasets"
 
 for file in $FILES; do # for loop iterates over a table
-    if [ ! -f $WORK_DIR/data/raw/$file ]; then 
+    if [ ! -f $WORK_DIR/data/raw/unicycler/$file ]; then 
         wget -P $WORK_DIR/data/raw/unicycler/ $SITE/$file
     fi      
 done 
@@ -54,15 +54,12 @@ echo "> quality control of the data"
 #fastqc illumina_r.fq -o ../../reports/QC/
 #fastqc minion_2d.fq -o ../../reports/QC/
 
-for file in $WORK_DIR/data/raw/*.fq; do 
+for file in $WORK_DIR/data/raw/unicycler/*.fq; do 
     if [ ! -d $WORK_DIR/reports/unicycler/QC ]; then 
         mkdir -p $WORK_DIR/reports/unicycler/QC
     fi
-#     if [ ! -d $WORK_DIR/reports/QC ]; then
-#         mkdir $WORK_DIR/reports/QC
-#     fi
-#     fastqc $file -o $WORK_DIR/reports/QC/
-# done
+    fastqc $file -o $WORK_DIR/reports/unicycler/QC/
+done
 
 # MultiQC on FASTQ files
 echo "> run multiqc"
@@ -88,7 +85,7 @@ echo "> run unicycler"
 #################
 ### Assess Assembly quality with Quast
 #################
-echo "run assembly quality with quast"
+echo "> run assembly quality with quast"
 
 # if [ ! -d $WORK_DIR/reports/quast ]; then
 #     mkdir $WORK_DIR/reports/quast
