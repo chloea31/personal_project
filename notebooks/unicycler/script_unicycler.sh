@@ -11,7 +11,7 @@
 ### Activate the working environment
 ####################
 
-conda activate EnvUnicycler
+# conda activate EnvUnicycler
 
 ####################
 ### Running the pipeline
