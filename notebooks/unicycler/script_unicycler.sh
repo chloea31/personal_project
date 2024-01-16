@@ -97,8 +97,6 @@ if [ ! -d $WORK_DIR/reports/unicycler/assembly ]; then
     -o reports/unicycler/assembly/ # hybrid assembly
 fi
 
-
-
 # grep ">" assembly.fasta | wc -l
 
 #################
@@ -106,11 +104,10 @@ fi
 #################
 echo "> run assembly quality with quast"
 
-# if [ ! -d $WORK_DIR/reports/quast ]; then
-#     mkdir $WORK_DIR/reports/quast
-# fi
-
-# $QUAST_DIR/quast.py -o $WORK_DIR/reports/quast/ $WORK_DIR/reports/assembly/assembly.fasta
+if [ ! -d $WORK_DIR/reports/unicycler/quast ]; then
+    mkdir -p $WORK_DIR/reports/unicycler/quast
+    $QUAST_DIR/quast.py -o $WORK_DIR/reports/unicycler/quast/ $WORK_DIR/reports/unicycler/assembly/assembly.fasta
+fi
 
 #################
 ### Genome annotation using Prokka
