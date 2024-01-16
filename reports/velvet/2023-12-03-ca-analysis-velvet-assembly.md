@@ -44,6 +44,8 @@ In each file named "report", and for each kmer value, we have:
       - N50: length of the shortest contig for which longer and equal contig lengths cover at least 50% of the assembly. The highest the better, as we can see on the graph N50 according to kmer length. For this N50 value, we have a genome fraction over 90% (highest value).
       - N90: same as N50, but covering at least 90% of the assembly (minimum contig length to cover at least 90% of the assembly). The highest the better (highest N90 value for the highest N50 one).
       - L50: smallest number of contigs whose length sum covers half of the assembly. The smallest the better (value of 2 for kmer = 55, highest for kmer value > 55 for kmer value < 55).
+
+![alt text](genome_assembly_depth_coverage.png)
   
 - Misassembly statistics: the smallest the better (3 for kmer = 55 and the majority of kmer values, 2 for kmer = 31 and 67).
 - Unaligned regions in the assembly: the smallest the better (0 for kmer = 55 and for the majority of kmer values).
@@ -51,7 +53,5 @@ In each file named "report", and for each kmer value, we have:
 - Statistics about the assembly: 
 
       - Scatter coverage (X) according to length (bp): 1 point = 1 node from the contigs.txt file. We can see many large collapsed scaffolds with coverage of 20X, with no other scaffolds, indicating probably no contamination. We can also notice the presence of one line (representing the scaffolds) formed by the scaffolds; some of them seem to present a coverage which would be almost two fold higher (around 38X), indicating potential aneuploidy.
-
-![alt text](genome_assembly_depth_coverage.png)
 
 - Benchmark:
