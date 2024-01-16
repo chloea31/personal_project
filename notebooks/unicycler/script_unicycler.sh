@@ -114,9 +114,11 @@ fi
 #################
 echo "> run prokka"
 
-# prokka --outdir $WORK_DIR/reports/prokka \
-#     --genus Escherichia \
-#     --species coli \
-#     --strain C-1 \
-#     --usegenus \
-#     $WORK_DIR/reports/assembly/assembly.fasta 
+if [ ! -d $WORK_DIR/reports/unicycler/prokka ]; then
+    prokka --outdir $WORK_DIR/reports/unicycler/prokka \
+        --genus Escherichia \
+        --species coli \
+        --strain C-1 \
+        --usegenus \
+        $WORK_DIR/reports/unicycler/assembly/assembly.fasta 
+fi
