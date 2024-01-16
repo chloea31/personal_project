@@ -54,4 +54,6 @@ In each file named "report", and for each kmer value, we have:
 
       - Scatter coverage (X) according to length (bp): 1 point = 1 node from the contigs.txt file. We can see many large collapsed scaffolds with coverage of 20X, with no other scaffolds, indicating probably no contamination. We can also notice the presence of one line (representing the scaffolds) formed by the scaffolds; some of them seem to present a coverage which would be almost two fold higher (around 38X), indicating potential aneuploidy.
 
+- Genome annotation:
+
 - Benchmark:
