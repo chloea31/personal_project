@@ -40,3 +40,21 @@ workflow {
     ) | downloadFiles
 }
 // the workflow defines the different steps of the pipeline
+
+process unicyclerAssembly {
+    input:
+        tuple val(species), val(illumina_f), val(illumina_r), val(minion_2d)
+
+    output:
+        path "${species}/reports/unicycler/assembly"
+
+    script:
+    """
+    mkdir -p $species/reports/unicycler/assembly/
+    unicycler -1 $illumina_f -2 $illumina_r -l $minion_2d -o ${species}/reports/unicycler/assembly/
+    """
+}
+
+workflow {
+    Channel.of() | unicyclerAssembly
+}
