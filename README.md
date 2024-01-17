@@ -60,7 +60,10 @@ This project is developed by Chloé Aujoulat.
     - Batut et al., 2018 Community-Driven Data Analysis Training for Biology Cell Systems 10.1016/j.cels.2018.05.012.
     - https://www.animalgenome.org/bioinfo/resources/manuals/velvet.pdf
     - Manual Velvet: https://github.com/dzerbino/velvet/blob/master/Manual.pdf
-- Unicycler:
+- Unicycler: 
+    - Anton Nekrutenko, Delphine Lariviere, Simon Gladman, Unicycler Assembly (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/assembly/tutorials/unicycler-assembly/tutorial.html Online; accessed Wed Jan 17 2024
+    - Hiltemann, Saskia, Rasche, Helena et al., 2023 Galaxy Training: A Powerful Framework for Teaching! PLOS Computational Biology 10.1371/journal.pcbi.1010752
+    - Batut et al., 2018 Community-Driven Data Analysis Training for Biology Cell Systems 10.1016/j.cels.2018.05.012
 - Coverage: 
     - https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html 
 
