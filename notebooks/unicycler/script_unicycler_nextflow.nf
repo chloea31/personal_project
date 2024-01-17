@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-// conda activate EnvVelvet
+// conda activate EnvUnicycler
 
 // to run the pipeline: nextflow run script_unicycler_nextflow.nf
 
