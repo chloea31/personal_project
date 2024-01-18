@@ -2,7 +2,7 @@
 
 ## FastQC
 
-Sequence length between 35 and 251 bp.
+Sequence length: 250 bp reads.
 
 ### Per base sequence quality
 
