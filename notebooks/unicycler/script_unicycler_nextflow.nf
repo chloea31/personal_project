@@ -56,5 +56,10 @@ process unicyclerAssembly {
 }
 
 workflow {
-    Channel.of() | unicyclerAssembly
+    Channel.of(
+      ["e.coli",
+      "e.coli/data/raw/unicycler/illumina_f.fq",
+      "e.coli/data/raw/unicycler/illumina_r.fq",
+      "e.coli/data/raw/unicycler/minion_2d.fq"]  
+    ) | unicyclerAssembly
 }
