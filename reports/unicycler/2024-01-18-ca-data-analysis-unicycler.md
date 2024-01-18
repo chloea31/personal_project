@@ -2,9 +2,9 @@
 
 ## FastQC
 
-Illumina read length: 250 bp reads.
+Maximum Illumina read length: 250 bp.
 
-Nanopore read length: 
+Maximum Nanopore read length: 27,518 bp. 
 
 ### Per base sequence quality
 
