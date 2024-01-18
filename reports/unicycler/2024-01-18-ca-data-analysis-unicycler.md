@@ -35,4 +35,10 @@ You might want to use this graph to detect a potential contamination by a sample
 - illumina_r: same as illumina_f
 - minion_2d: same as illumina_f
 
+### Sequence duplication level
+
+- illumina_f: high sequence duplication level (>80%) => DNA
+- illumina_r: high sequence duplication level (>80%) => DNA
+- minion_2d: high sequence duplication level (>80%) => DNA
+
 
