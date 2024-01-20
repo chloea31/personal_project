@@ -18,7 +18,7 @@ with open("../../reports/unicycler/QC/illumina_f_fastqc/illumina_f_fastqc/fastqc
                 data.append(new_row.split(","))
     #print(data)
 
-df = pd.DataFrame(data).rename(columns = {0:"#Length", 1:"Count"})
+df = pd.DataFrame(data).rename(columns = {0:"#Length", 1:"Count"}) # or (data[1:], columns = data[0])
 df = df[1:]
 print(df)
 
