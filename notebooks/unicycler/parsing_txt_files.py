@@ -21,3 +21,5 @@ with open("../../reports/unicycler/QC/illumina_f_fastqc/illumina_f_fastqc/fastqc
 df = pd.DataFrame(data).rename(columns = {0:"#Length", 1:"Count"})
 df = df[1:]
 print(df)
+
+df.to_csv("../../reports/unicycler/QC/illumina_f_fastqc/illumina_f_fastqc/illumina_f_seq_length_dist.csv", sep = ",", index = False)
