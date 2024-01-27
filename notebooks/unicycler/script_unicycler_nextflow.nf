@@ -3,6 +3,7 @@
 // conda activate EnvUnicycler
 
 // to run the pipeline: nextflow run script_unicycler_nextflow.nf
+// nextflow run script_unicycler_nextflow.nf - resume // to avoid running again the steps already performed
 
 // Declare synthax version
 nextflow.enable.dsl=2 
