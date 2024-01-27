@@ -48,13 +48,29 @@ process unicyclerAssembly {
     """
 }
 
+process assemblyQualityQuast {
+    input:
+        path species
+        path assembly
+        path quast
+
+    output:
+        path "${species}/reports/unicycler/quast"
+
+    script:
+    """
+    mkdir -p $species/reports/unicycler/quast/
+    $quast/quast.py -o $species/reports/unicycler/quast/ $assembly/assembly.fasta
+    """
+}
+
 workflow {
     Channel.of(
         ["e.coli",
          "https://zenodo.org/record/940733/files/illumina_f.fq",
          "https://zenodo.org/record/940733/files/illumina_r.fq",
          "https://zenodo.org/record/940733/files/minion_2d.fq"]
-    ) | downloadFiles | unicyclerAssembly
+    ) | downloadFiles | unicyclerAssembly | assemblyQualityQuast
 }
 // the workflow defines the different steps of the pipeline
 
