@@ -65,13 +65,28 @@ process assemblyQualityQuast {
     """
 }
 
+process annotationProkka {
+    input:
+        path species
+        path assembly
+        path quast
+
+    output:
+        path "$species/reports/unicycler/prokka"
+
+    script:
+    """
+    prokka --outdir $species/reports/unicycler/prokka --genus Escherichia --species coli --strain C-1--usegenus $assembly/assembly.fasta 
+    """
+}
+
 workflow {
     Channel.of(
         ["e.coli",
          "https://zenodo.org/record/940733/files/illumina_f.fq",
          "https://zenodo.org/record/940733/files/illumina_r.fq",
          "https://zenodo.org/record/940733/files/minion_2d.fq"]
-    ) | downloadFiles | unicyclerAssembly | assemblyQualityQuast
+    ) | downloadFiles | unicyclerAssembly | assemblyQualityQuast | annotationProkka
 }
 // the workflow defines the different steps of the pipeline
 
