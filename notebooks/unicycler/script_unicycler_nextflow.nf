@@ -39,6 +39,7 @@ process unicyclerAssembly {
         path minion_2d
 
     output:
+        path "${species}"
         path "${species}/reports/unicycler/assembly"
 
     script:
@@ -52,7 +53,6 @@ process assemblyQualityQuast {
     input:
         path species
         path assembly
-        path quast
 
     output:
         path "${species}/reports/unicycler/quast"
@@ -60,7 +60,7 @@ process assemblyQualityQuast {
     script:
     """
     mkdir -p $species/reports/unicycler/quast/
-    $quast/quast.py -o $species/reports/unicycler/quast/ $assembly/assembly.fasta
+    quast -o $species/reports/unicycler/quast/ $assembly/assembly.fasta
     """
 }
 
