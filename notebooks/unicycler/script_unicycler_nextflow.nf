@@ -3,7 +3,7 @@
 // conda activate EnvUnicycler
 
 // to run the pipeline: nextflow run script_unicycler_nextflow.nf
-// nextflow run script_unicycler_nextflow.nf - resume // to avoid running again the steps already performed
+// nextflow run script_unicycler_nextflow.nf -resume // to avoid running again the steps already performed
 
 // Declare synthax version
 nextflow.enable.dsl=2 
@@ -69,24 +69,27 @@ process annotationProkka {
     input:
         path species
         path assembly
-        path quast
 
     output:
         path "$species/reports/unicycler/prokka"
 
     script:
     """
-    prokka --outdir $species/reports/unicycler/prokka --genus Escherichia --species coli --strain C-1--usegenus $assembly/assembly.fasta 
+    prokka --outdir $species/reports/unicycler/prokka --genus Escherichia --species coli --strain C-1 --usegenus $assembly/assembly.fasta 
     """
 }
 
 workflow {
-    Channel.of(
+    data = Channel.of(
         ["e.coli",
          "https://zenodo.org/record/940733/files/illumina_f.fq",
          "https://zenodo.org/record/940733/files/illumina_r.fq",
          "https://zenodo.org/record/940733/files/minion_2d.fq"]
-    ) | downloadFiles | unicyclerAssembly | assemblyQualityQuast | annotationProkka
+    )
+    (species, illumina_f, illumina_r, minion_2d) = downloadFiles(data) 
+    (species, assembly) = unicyclerAssembly(species, illumina_f, illumina_r, minion_2d) 
+    quast = assemblyQualityQuast(species, assembly) 
+    prokka = annotationProkka(species, assembly)
 }
 // the workflow defines the different steps of the pipeline
 
