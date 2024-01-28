@@ -32,6 +32,25 @@ process downloadFiles {
 }
 // -O option to download a file and mention a specific name
 
+process fastQC {
+    input:
+        path species // convenient with the first process
+        path illumina_f // define the names of the inputs, so no whole path here
+        path illumina_r
+        path minion_2d
+
+    output:
+        path "${species}/reports/unicycler/QC"
+
+    script:
+    """
+    mkdir -p ${species}/reports/unicycler/QC/
+    fastqc -o ${species}/reports/unicycler/QC/ $illumina_f
+    fastqc -o ${species}/reports/unicycler/QC/ $illumina_r
+    fastqc -o ${species}/reports/unicycler/QC/ $minion_2d
+    """
+}
+
 process unicyclerAssembly {
     input:
         path species // convenient with the first process
@@ -87,10 +106,11 @@ workflow {
          "https://zenodo.org/record/940733/files/minion_2d.fq"]
     )
     (species, illumina_f, illumina_r, minion_2d) = downloadFiles(data) 
+    QC = fastQC(species, illumina_f, illumina_r, minion_2d)
     (species, assembly) = unicyclerAssembly(species, illumina_f, illumina_r, minion_2d) 
     quast = assemblyQualityQuast(species, assembly) 
     prokka = annotationProkka(species, assembly)
 }
 // the workflow defines the different steps of the pipeline
-
+// Subworkflow: no subworkflow if we do not have anything which is repeated in the pipeline
 
