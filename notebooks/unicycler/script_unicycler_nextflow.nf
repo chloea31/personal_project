@@ -51,6 +51,20 @@ process fastQC {
     """
 }
 
+process multiQC {
+    input:
+        path QC // convenient with the first process
+
+    output:
+        path "${QC}/multiQC"
+
+    script:
+    """
+    mkdir -p ${QC}/multiQC/
+    multiqc ${QC} -o ${QC}/multiQC/multiqc_data
+    """
+}
+
 process unicyclerAssembly {
     input:
         path species // convenient with the first process
@@ -107,6 +121,7 @@ workflow {
     )
     (species, illumina_f, illumina_r, minion_2d) = downloadFiles(data) 
     QC = fastQC(species, illumina_f, illumina_r, minion_2d)
+    multiqc_data = multiQC(QC)
     (species, assembly) = unicyclerAssembly(species, illumina_f, illumina_r, minion_2d) 
     quast = assemblyQualityQuast(species, assembly) 
     prokka = annotationProkka(species, assembly)
