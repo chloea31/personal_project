@@ -1,5 +1,7 @@
 # Data analysis Unicycler
 
+Hybrid (both short and long reads) assembly of small genomes (bacteria, virus, organellar).
+
 ## FastQC
 
 Maximum Illumina read length: 250 bp.
@@ -42,5 +44,7 @@ You might want to use this graph to detect a potential contamination by a sample
 - illumina_f: high sequence duplication level (>80%) => DNA
 - illumina_r: high sequence duplication level (>80%) => DNA
 - minion_2d: high sequence duplication level (>80%) => DNA
+
+### Hybrid assembly (Unicycler)
 
 
