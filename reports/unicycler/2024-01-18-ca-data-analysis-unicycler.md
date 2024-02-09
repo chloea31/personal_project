@@ -47,12 +47,14 @@ You might want to use this graph to detect a potential contamination by a sample
 
 ### Hybrid assembly (Unicycler)
 
+### Assess assembly quality using Quast
+
 - report.pdf file:
     - Graph cumulative length (kbp) according to the number of contigs:
     We can notice that there are 2 contigs. The largest one would be around/more than 4,500,000 bp.
     Length difference between the largest and the smallest contig (according to the tutorial): 4,581,676 (total length) - 4,576,290 (length of the largest) = 5,386 bp
     Analysis of the 2nd contig: genome of a bacteriophage, called phiX174 (PhiX library). It is a reliable, adapter-ligated library used as a control for Illumina sequencing runs, with an average size of 500 bp, and with balanced base composition (45% GC and 55% AT). Small and well-defined sequence genome. Assists with template registration and improves overall run quality. Provides a quality control for cluster generation, sequencing, and alignment, and a calibration control for cross-talk matrix generation, phasing, and prephasing (illumina.com website).   
 
-### Assess assembly quality using Quast
-
 ### Annotation of Prokaryotic genome using Prokka
+
+See IGV
