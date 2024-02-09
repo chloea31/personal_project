@@ -47,4 +47,11 @@ You might want to use this graph to detect a potential contamination by a sample
 
 ### Hybrid assembly (Unicycler)
 
+- report.pdf file:
+    - Graph cumulative length (kbp) according to the number of contigs:
+    We can notice that there are 2 contigs. The largest one would be around/more than 4,500,000 bp.
+    Length difference between the largest and the smallest contig (according to the tutorial): 4,581,676 (total length) - 4,576,290 (length of the largest) = 5,386 bp 
 
+### Assess assembly quality using Quast
+
+### Annotation of Prokaryotic genome using Prokka
