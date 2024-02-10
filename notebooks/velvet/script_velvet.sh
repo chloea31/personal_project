@@ -85,7 +85,7 @@ echo "> run the multiQC"
 mkdir -p "$WORK_DIR/reports/velvet/QC/multiQC"
 
 if [ ! -d $WORK_DIR/reports/velvet/QC/multiQC/multiqc_data ]; then
-    multiqc "$WORK_DIR/reports/velvet/QC/*_fastqc.zip" -o "$WORK_DIR/reports/velvet/QC/multiQC"
+    multiqc "$WORK_DIR/reports/velvet/QC/" -o "$WORK_DIR/reports/velvet/QC/multiQC"
 fi
 
 ####################
