@@ -1,4 +1,6 @@
-# Data analysis
+# Data analysis of Velvet assembly
+
+![alt text](velvet_work.png)
 
 ## FASTQC:
 
