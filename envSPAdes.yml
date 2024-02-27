@@ -1,0 +1,23 @@
+name: EnvSPAdes
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - spades
+  - fastqc
+  - multiqc
+  - python>=3.10
+  - plotly
+  - pip
+  - numpy
+  - pandas
+  - jupyter
+  - scipy
+  - matplotlib
+  - quast
+  - prokka
+  - nextflow
+  - pip:
+    - scikit-learn
+    - dash
+    - jupyter-dash
