@@ -84,5 +84,8 @@ if [ ! -d $WORK_DIR/reports/spades/QC/multiQC/multiqc_data ]; then
 fi
 
 ####################
-### Assemble reads with Velvet
+### Assemble reads with SPAdes
 ####################
+echo "> genome assembly"
+
+mkdir -p "$WORK_DIR/reports/spades/assembly"
