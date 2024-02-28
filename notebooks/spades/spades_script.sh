@@ -37,13 +37,13 @@ fi
 if [ ! -d $WORK_DIR/data/raw ]; then 
     mkdir "$WORK_DIR/data/raw"
 fi
-if [ ! -d $WORK_DIR/data/raw/velvet ]; then
-    mkdir "$WORK_DIR/data/raw/velvet"
+if [ ! -d $WORK_DIR/data/raw/spades ]; then
+    mkdir "$WORK_DIR/data/raw/spades"
 fi
 
 for file in $FILES; do # for loop iterates over a table
-    if [ ! -f "$WORK_DIR/data/raw/velvet/$file" ]; then 
-        wget -P "$WORK_DIR/data/raw/velvet/" "$SITE/$file"
+    if [ ! -f "$WORK_DIR/data/raw/spades/$file" ]; then 
+        wget -P "$WORK_DIR/data/raw/spades/" "$SITE/$file"
     fi      
 done 
 
