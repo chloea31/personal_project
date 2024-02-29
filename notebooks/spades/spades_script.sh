@@ -105,3 +105,17 @@ if [ ! -d $WORK_DIR/reports/spades/quast ]; then
     mkdir -p "$WORK_DIR/reports/spades/quast"
     $QUAST_DIR/quast.py -o $WORK_DIR/reports/spades/quast/ $WORK_DIR/reports/spades/assembly/scaffolds.fasta
 fi
+
+#################
+### Genome annotation using Prokka
+#################
+echo "> run prokka"
+
+if [ ! -d $WORK_DIR/reports/spades/prokka ]; then
+    prokka --outdir $WORK_DIR/reports/spades/prokka \
+        --genus Escherichia \
+        --species coli \
+        --strain C-1 \
+        --usegenus \
+        $WORK_DIR/reports/spades/assembly/scaffolds.fasta 
+fi
