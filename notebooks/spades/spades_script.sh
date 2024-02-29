@@ -88,11 +88,20 @@ fi
 ####################
 echo "> genome assembly"
 
-mkdir -p "$WORK_DIR/reports/spades/assembly"
-
-if [ ! -f "$WORK_DIR/reports/spades/assembly/spades.log" ]; then
+if [ ! -d $WORK_DIR/reports/spades/assembly/ ]; then
+    mkdir -p "$WORK_DIR/reports/spades/assembly"
     spades.py -1 "$WORK_DIR/data/raw/spades/mutant_R1.fastq" -2 "$WORK_DIR/data/raw/spades/mutant_R2.fastq" \
         --careful \
         --cov-cutoff auto \
         -o "$WORK_DIR/reports/spades/assembly/"
+fi
+
+#################
+### Assess Assembly quality with Quast
+#################
+echo "> run assembly quality with quast"
+
+if [ ! -d $WORK_DIR/reports/spades/quast ]; then
+    mkdir -p "$WORK_DIR/reports/spades/quast"
+    $QUAST_DIR/quast.py -o $WORK_DIR/reports/spades/quast/ $WORK_DIR/reports/spades/assembly/scaffolds.fasta
 fi
