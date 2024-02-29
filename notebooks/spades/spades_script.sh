@@ -89,3 +89,10 @@ fi
 echo "> genome assembly"
 
 mkdir -p "$WORK_DIR/reports/spades/assembly"
+
+if [ ! -f "$WORK_DIR/reports/spades/assembly/spades.log" ]; then
+    spades.py -1 "$WORK_DIR/data/raw/spades/mutant_R1.fastq" -2 "$WORK_DIR/data/raw/spades/mutant_R2.fastq" \
+        --careful \
+        --cov-cutoff auto \
+        -o "$WORK_DIR/reports/spades/assembly/"
+fi
