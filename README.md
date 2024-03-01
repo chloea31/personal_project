@@ -81,5 +81,5 @@ This project is developed by Chloé Aujoulat.
 - https://www.sciencedirect.com/science/article/pii/S0888754319300588 
 - Anton Bankevich, Sergey Nurk, Dmitry Antipov, Alexey A. Gurevich, Mikhail Dvorkin, Alexander S. Kulikov, Valery M. Lesin, Sergey I. Nikolenko, Son Pham, Andrey D. Prjibelski, Alexey V. Pyshkin, Alexander V. Sirotkin, Nikolay Vyahhi, Glenn Tesler, Max A. Alekseyev, and Pavel A. Pevzner. « SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing ».
 Journal of Computational Biology.May 2012.455-477.http://doi.org/10.1089/cmb.2012.0021
-- Turco, S., Mazzaglia, A., Drais, M.I. et al. Hybrid de novo genome assembly and comparative genomics of three different isolates of Gnomoniopsis castaneae. Sci Rep 13, 3356 (2023). https://doi.org/10.1038/s41598-023-30496-0
+- Turco, S., Mazzaglia, A., Drais, M.I. et al. « Hybrid de novo genome assembly and comparative genomics of three different isolates of Gnomoniopsis castaneae ». Sci Rep 13, 3356 (2023). https://doi.org/10.1038/s41598-023-30496-0
 
