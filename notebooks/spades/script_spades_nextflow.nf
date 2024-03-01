@@ -123,7 +123,7 @@ workflow {
     (species, R1, R2) = downloadFiles(data) 
     QC = fastQC(species, R1, R2)
     multiqc_data = multiQC(QC)
-    (species, assembly) = unicyclerAssembly(species, R1, R2) 
+    (species, assembly) = SPAdesAssembly(species, R1, R2) 
     quast = assemblyQualityQuast(species, assembly) 
     prokka = annotationProkka(species, assembly)
 }
