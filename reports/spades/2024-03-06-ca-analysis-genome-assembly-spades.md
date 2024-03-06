@@ -31,3 +31,9 @@ GC count per read in accordance to theoretical distribution => No contamination.
 High % of duplication (around 89.3%) => DNA
 
 ## SPAdes assembly
+
+### contigs.fasta file:
+
+### scaffolds.fasta file:
+
+## QUAST, QUality ASsessment Tool
