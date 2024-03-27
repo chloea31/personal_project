@@ -30,10 +30,15 @@ GC count per read in accordance to theoretical distribution => No contamination.
 
 High % of duplication (around 89.3%) => DNA
 
-## SPAdes assembly
+## SPAdes assembly and QUAST, QUality ASsessment Tool
 
 ### contigs.fasta file:
 
 ### scaffolds.fasta file:
 
-## QUAST, QUality ASsessment Tool
+According to the report file (after running quast), we could notice that:
+
+- N50 = largest contig = 132,140
+- Total length = 179,286
+- We have 6 contigs in total
+- 0 mismatches
