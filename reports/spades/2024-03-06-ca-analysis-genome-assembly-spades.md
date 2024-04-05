@@ -39,6 +39,8 @@ High % of duplication (around 89.3%) => DNA
 According to the report file (after running quast), we could notice that:
 
 - N50 = largest contig = 132,140
+    - N50: measures of contiguity (not correctness), used as a standard metric to evaluate a genome assembly.
+    - High number => Low level of fragmentation
 - Total length = 179,286
 - We have 6 contigs in total
 - 0 mismatches
