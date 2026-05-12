@@ -52,6 +52,7 @@ This project is developed by Chloé Aujoulat.
 ### Master thesis
 
 - See link presented hereafter, filled in during the Master's thesis (Mittweida): https://docs.google.com/document/d/1qY48NFNB6xLzdDkWUJjfnFKcO7WQIyV5wA82bXYRPmQ/edit#heading=h.i9iemt2vcgr5 
+- See link presented hereafter, corresponding to the poster presented at the NWK conference (Brandenburg, May 2022): https://github.com/chloea31/personal_project/blob/main/reports/poster_NWK_Brandenburg/HSMW_WissenPoster_A0__Vorlage_V2.pdf  
 
 ### Tutorials
 - Velvet:
